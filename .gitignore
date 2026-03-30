@@ -1,5 +1,7 @@
 node_modules/
 dist/
+.vercel/
+build/
 .env
 .github-token
 .claude/
