@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PCLabs — PC Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- TITLEBAR -->
+<div id="titlebar">
+  <div class="tbar-logo"><b>PC</b><em>Labs</em></div>
+  <div class="tbar-btns">
+    <button class="tbar-btn" id="tb-min">&#8211;</button>
+    <button class="tbar-btn" id="tb-max">&#9744;</button>
+    <button class="tbar-btn" id="tb-close">&#10005;</button>
+  </div>
+</div>
+
+<div id="shell">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <div class="sb-logo"><b>PC</b><em>Labs</em></div>
+    <nav class="sb-nav">
+      <button class="nb active" data-sec="overview">  <span class="nb-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="0.6" y="0.6" width="4.8" height="4.8" rx="0.6" stroke="currentColor" stroke-width="1.2"/><rect x="6.6" y="0.6" width="4.8" height="4.8" rx="0.6" stroke="currentColor" stroke-width="1.2"/><rect x="0.6" y="6.6" width="4.8" height="4.8" rx="0.6" stroke="currentColor" stroke-width="1.2"/><rect x="6.6" y="6.6" width="4.8" height="4.8" rx="0.6" stroke="currentColor" stroke-width="1.2"/></svg></span> Overview<span class="nb-dot"></span></button>
+      <button class="nb" data-sec="diagnostics">      <span class="nb-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="0.6" y="7" width="2.5" height="4.4" rx="0.4" fill="currentColor"/><rect x="4.75" y="4.5" width="2.5" height="6.9" rx="0.4" fill="currentColor"/><rect x="8.9" y="1.5" width="2.5" height="9.9" rx="0.4" fill="currentColor"/></svg></span> Diagnostics<span class="nb-dot"></span></button>
+      <button class="nb" data-sec="gaming">           <span class="nb-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 5h9L9 9.5H3L1.5 5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M4 7V5.8M3.4 6.4H4.6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><circle cx="8.4" cy="6.5" r=".6" fill="currentColor"/><circle cx="8.4" cy="7.7" r=".6" fill="currentColor"/></svg></span> Gaming<span class="nb-dot"></span></button>
+      <button class="nb" data-sec="recommendations">  <span class="nb-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="1.6" cy="3" r="1" fill="currentColor"/><path d="M4.5 3h7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="1.6" cy="6.5" r="1" fill="currentColor"/><path d="M4.5 6.5h7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="1.6" cy="10" r="1" fill="currentColor"/><path d="M4.5 10h7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span> Recommendations<span class="nb-dot"></span></button>
+      <button class="nb" data-sec="junk">             <span class="nb-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 3.5h9M7 3.5V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1M3 3.5l.6 6.5h4.8L9 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Junk Cleaner<span class="nb-dot b"></span><span style="font-size:0.55rem;font-family:var(--mono);color:var(--blue);margin-left:auto;margin-right:2px">PRO</span></button>
+      <button class="nb" data-sec="optimizer">        <span class="nb-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3h10M1 6.5h10M1 10h10" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.35"/><circle cx="4" cy="3" r="1.5" fill="currentColor"/><circle cx="8" cy="6.5" r="1.5" fill="currentColor"/><circle cx="5.5" cy="10" r="1.5" fill="currentColor"/></svg></span> Game Optimizer<span class="nb-dot b"></span><span style="font-size:0.55rem;font-family:var(--mono);color:var(--blue);margin-left:auto;margin-right:2px">PRO</span></button>
+    </nav>
+    <div class="sb-foot">
+      <button class="pro-sb-btn" id="btn-get-pro">Get Pro — $2.99</button>
+      <button class="fb-btn" id="btn-feedback">Send Feedback</button>
+      <div class="sb-ver">v0.2.0</div>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div id="content">
+
+    <!-- HOME -->
+    <div class="screen active" id="s-home">
+      <div class="home-wrap">
+        <div class="home-glow"></div>
+        <div class="hbadge">Diagnostic Platform</div>
+        <h1 class="htitle"><b>PC</b><span>Labs</span></h1>
+        <p class="hsub">System diagnostics and performance analysis for Windows</p>
+        <p class="hdisclaim">Read-only · No changes made to your PC</p>
+        <button class="scan-btn" id="btn-scan">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 5v3l2 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Run Diagnostic Scan
+        </button>
+        <p class="hhint">30–90 seconds · nothing is changed on your PC</p>
+        <div class="home-caps">
+          <span class="home-cap-item">CPU &amp; GPU</span>
+          <span class="home-cap-item">Storage</span>
+          <span class="home-cap-item">Stability</span>
+          <span class="home-cap-item">Performance</span>
+          <span class="home-cap-item">Windows Health</span>
+          <span class="home-cap-item">Network</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCANNING -->
+    <div class="screen" id="s-scanning">
+      <div class="scan-wrap">
+
+        <!-- Identity header: lab label + live state indicator -->
+        <div class="scan-header">
+          <div class="scan-id-label"><span class="scan-id-brand">PCLabs</span> · Diagnostic Suite</div>
+          <div class="scan-running-badge">
+            <span class="scan-pulse-dot"></span>
+            Analysis in progress
+          </div>
+        </div>
+
+        <!-- Console panel: step sequence is the visual hero -->
+        <div class="scan-console">
+          <div class="scan-console-hdr">
+            <span class="scan-console-title">Diagnostic sequence</span>
+            <span class="scan-sub" id="scan-status">Reading hardware profile…</span>
+          </div>
+          <div class="scan-steps">
+            <div class="sstep" id="st-hw">○ Hardware profile</div>
+            <div class="sstep" id="st-storage">○ Storage analysis</div>
+            <div class="sstep" id="st-stability">○ Crash &amp; stability history</div>
+            <div class="sstep" id="st-perf">○ Performance &amp; startup</div>
+            <div class="sstep" id="st-windows">○ Windows health &amp; security</div>
+            <div class="sstep" id="st-network">○ Network</div>
+            <div class="sstep" id="st-score">○ Compiling report</div>
+          </div>
+        </div>
+
+        <div class="scan-foot-note">Read-only · no changes made to your PC</div>
+
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="screen" id="s-results">
+
+      <!-- OVERVIEW -->
+      <div class="rsec active" id="sec-overview">
+        <div class="sec-hdr">
+          <div><div class="sec-tag">Overview</div><div class="sec-title">System summary</div></div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <button class="export-btn" id="btn-export" disabled>↓ Export Report</button>
+            <button class="rescan-btn" id="btn-rescan">↺ Scan again</button>
+          </div>
+        </div>
+        <!-- Hero summary: unified readout replaces 3-column score cards -->
+        <div class="ov-hero">
+          <div class="ov-hero-body">
+            <!-- Primary: health score (large, mono) -->
+            <div class="ov-score-col">
+              <div class="ov-score-lbl">Health Score</div>
+              <div class="sc-val a" id="r-score">—</div>
+              <div class="ov-score-status" id="r-score-sub">—</div>
+            </div>
+            <!-- Secondary: inline readout rows -->
+            <div class="ov-meta-col">
+              <div class="ov-readout">
+                <span class="ov-readout-lbl">Readiness</span>
+                <span class="sc-val g" id="r-ready">—</span>
+              </div>
+              <div class="ov-readout">
+                <span class="ov-readout-lbl">Findings</span>
+                <span class="sc-val a" id="r-issue-count">—</span>
+              </div>
+              <div class="ov-readout">
+                <span class="ov-readout-lbl">Coverage</span>
+                <span class="ov-readout-static" id="r-issue-sub">—</span>
+              </div>
+            </div>
+          </div>
+          <!-- Health score progress bar: full-width base -->
+          <div class="ov-hero-bar">
+            <div class="sc-bar-fill ba" id="r-score-bar" style="width:0%"></div>
+          </div>
+          <!-- Meta footer: scan timestamp + category count (display only) -->
+          <div class="ov-hero-meta">
+            <div class="ov-hero-meta-item">Scanned <span id="ov-scan-time">—</span></div>
+            <div class="ov-hero-meta-item"><span id="ov-cat-count">—</span> categories covered</div>
+          </div>
+          <!-- Hidden: JS writes to these bar IDs; kept in DOM, not displayed -->
+          <div style="display:none" aria-hidden="true">
+            <span id="r-ready-bar"></span><span id="r-issue-bar"></span>
+          </div>
+        </div>
+        <div class="sys-strip" id="sys-strip"></div>
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-lbl">Key Findings</div>
+            <ul class="issue-list" id="r-issues-ov"></ul>
+          </div>
+          <div class="panel">
+            <div class="panel-lbl">Priority Actions</div>
+            <ul class="action-list" id="r-actions-ov"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIAGNOSTICS -->
+      <div class="rsec" id="sec-diagnostics">
+        <div class="sec-hdr">
+          <div><div class="sec-tag">Diagnostics</div><div class="sec-title">System diagnostics</div></div>
+        </div>
+        <div id="diag-cats"></div>
+        <!-- Module sections: BIOS/Motherboard, Startup Apps, Background Processes -->
+        <div id="diag-modules"></div>
+      </div>
+
+      <!-- GAMING -->
+      <div class="rsec" id="sec-gaming">
+        <div class="sec-hdr">
+          <div><div class="sec-tag">Gaming</div><div class="sec-title">Gaming readiness</div></div>
+        </div>
+        <div class="gr-card">
+          <div class="gr-score g" id="gr-score">—</div>
+          <div>
+            <div class="gr-lbl">Readiness Score</div>
+            <div class="gr-sub" id="gr-sub">Run a scan to see results</div>
+            <div class="gr-issue-note" id="gr-issue-note"></div>
+          </div>
+          <div class="gr-bar" id="gr-bar"></div>
+        </div>
+        <div id="gr-hw"></div>
+        <div id="gaming-cats"></div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <div class="rsec" id="sec-recommendations">
+        <div class="sec-hdr">
+          <div><div class="sec-tag">Recommendations</div><div class="sec-title">Recommended actions</div></div>
+        </div>
+        <div class="rec-list" id="r-recs"></div>
+        <div class="disclaimer-box">
+          <strong>Read-only diagnostics.</strong>
+          PCLabs does not make any changes to your PC. Every recommendation here is for your information only — you decide what to act on.
+          No registry edits, no driver installs, no automatic fixes.
+        </div>
+      </div>
+
+      <!-- PRO UPGRADE BANNER — sticky footer, visible after scan completes -->
+      <div class="pro-results-banner" id="pro-banner">
+
+        <!-- Default: upgrade prompt -->
+        <div class="pro-banner-default" id="pro-banner-default">
+          <div class="pro-banner-text">
+            PCLabs Pro unlocks Junk Cleaner, Game Optimizer with per-game tips, and full export reports — <em>$2.99 one-time</em>, price goes up as features are added.
+          </div>
+          <button class="pro-banner-cta" id="btn-results-pro">Get Pro — $2.99</button>
+          <button class="pro-key-link" id="btn-show-key-entry">Have a key?</button>
+        </div>
+
+        <!-- Key entry state -->
+        <div class="pro-banner-keyentry" id="pro-banner-keyentry" style="display:none">
+          <span class="pro-key-label">Pro key:</span>
+          <input class="pro-key-input" id="pro-key-input" type="text"
+            placeholder="PCLABS-XXXX-XXXX-XXXX" maxlength="21"
+            spellcheck="false" autocomplete="off" autocapitalize="characters" />
+          <span class="pro-key-error" id="pro-key-error"></span>
+          <button class="pro-banner-cta" id="btn-activate-key">Activate</button>
+          <button class="pro-key-link" id="btn-cancel-key-entry">Cancel</button>
+        </div>
+
+        <!-- Pro active state -->
+        <div class="pro-banner-active" id="pro-banner-active" style="display:none">
+          <span class="pro-active-check"></span>
+          <span class="pro-active-text">Pro Active</span>
+          <span class="pro-active-sub">— All features unlocked</span>
+        </div>
+
+      </div>
+
+    </div><!-- /s-results -->
+
+    <!-- JUNK CLEANER SCREEN -->
+    <div class="screen" id="s-junk">
+      <div class="tool-wrap">
+        <div class="tool-hdr">
+          <div class="tool-tag">Pro Feature</div>
+          <div class="tool-title">Junk Cleaner</div>
+          <div class="tool-sub">Scan for safe-to-remove files and free up space. Nothing is deleted until you click Clean.</div>
+        </div>
+        <div id="junk-content">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME OPTIMIZER SCREEN -->
+    <div class="screen" id="s-optimizer">
+      <div class="tool-wrap">
+        <div class="tool-hdr">
+          <div class="tool-tag">Pro Feature</div>
+          <div class="tool-title">Game Optimizer</div>
+          <div class="tool-sub">Apply Windows-level gaming optimizations. All changes are safe and reversible.</div>
+        </div>
+        <div id="optimizer-content">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /shell -->
+
+<script src="renderer.js"></script>
+
+<!-- Pro-gate modal -->
+<div class="progate-overlay" id="progate-modal">
+  <div class="progate-box">
+    <div class="progate-icon"></div>
+    <div class="progate-title">Pro Feature</div>
+    <p class="progate-msg">Export Reports is a Pro feature — upgrade to PCLabs Pro for $2.99</p>
+    <button class="progate-btn" id="progate-upgrade-btn">Upgrade to Pro — $2.99</button>
+    <button class="progate-dismiss" id="progate-dismiss-btn">Maybe later</button>
+  </div>
+</div>
+
+</body>
+</html>

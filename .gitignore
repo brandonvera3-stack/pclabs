@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.github-token
+.claude/
+beta-keys.md
+keys.json
+pclabs-keys/
+faq.html
+pricing.html
+website/
+PCLabs_MASTER_SAVE_STATE.txt

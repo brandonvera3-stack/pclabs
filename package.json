@@ -1,0 +1,37 @@
+{
+  "name": "pclabs",
+  "version": "0.2.0",
+  "description": "PCLabs - One-click PC diagnostics",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "jimp": "^1.6.0"
+  },
+  "build": {
+    "appId": "com.pclabs.app",
+    "productName": "PCLabs",
+    "icon": "build/icon.ico",
+    "win": {
+      "target": "nsis",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js",
+      "styles.css",
+      "keys.json"
+    ]
+  }
+}
